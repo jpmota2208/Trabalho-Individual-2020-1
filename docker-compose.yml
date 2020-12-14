@@ -1,0 +1,63 @@
+version: '3.7'
+
+services:
+  client:
+    container_name: ${FRONT_APP_NAME}
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile
+    ports:
+      - ${FRONT_APP_PORT}:${FRONT_APP_PORT}
+    volumes:
+      - ./client:/app/client
+      - node_modules:/app/client/node_modules
+    env_file: .env
+    environment:
+      NODE_ENV: ${NODE_ENV}
+
+  api:
+    container_name: api
+
+    build: 
+      context: .
+      dockerfile: ./api/Dockerfile
+    
+    ports: 
+      - 3000:3000
+
+    volumes: 
+      - ./api:/code
+      - gems_back:/usr/local/bundle
+
+    env_file: ./.env
+    
+    links:
+      - db
+    depends_on:
+      - db
+
+    networks: 
+      - network
+    
+    command: rails server -p 3000 -b '0.0.0.0'
+
+  db:
+    container_name: database
+
+    image: postgres:13
+
+    volumes: 
+      - data_base:/var/lib/postgresql/data
+
+    env_file: ./.env
+
+    networks: 
+      - network
+
+volumes:
+  node_modules:
+  gems_back:
+  data_base:
+
+networks: 
+  network:
