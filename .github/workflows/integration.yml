@@ -22,6 +22,10 @@ jobs:
       run: docker-compose run -e "NODE_ENV=test" --rm client
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
+      with:
+        args: >
+          -Dsonar.organization=jpmota2208
+          -Dsonar.projectKey=jpmota2208_Trabalho-Individual-2020-1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
