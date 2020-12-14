@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Build project
       run: docker-compose up --build -d
     - name: Run API tests
       run: docker-compose run -e "RAILS_ENV=test" api rake test
     - name: Run Client tests
-      run: docker-compose run client yarn run test:unit
+      run: docker-compose run -e "NODE_ENV=test" --rm client
