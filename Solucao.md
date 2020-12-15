@@ -17,9 +17,11 @@ Para a integração contínua foi utilizado o **Github Actions**. Para simplific
 É utilizado o **SonarCloud** para análise de qualidade estática do código.
 
 ## Deploy
-O cliente e a api tiveram seu deploy realizado em locais diferentes. O cliente foi utilizando o **Vercel**, pela sua compatibilidade com projetos JS.
+O cliente e a api tiveram seu deploy realizado em locais diferentes. O cliente foi utilizando o **Vercel**, pela sua compatibilidade com projetos JS. Já o back-end foi realizado utilizando o **Heroku**, depois de algumas tentativas falhas com outras plataformas.
 
 Link do deploy do front: https://trabalho-individual-2020-1-git-master.jpmota2208.vercel.app/#/
+
+Link do deploy do back: https://trabackend.herokuapp.com/
 
 ## Como executar
 
